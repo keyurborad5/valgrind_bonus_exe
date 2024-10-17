@@ -22,3 +22,21 @@
   rm -rf build/
 ```
 
+### Use Valgrind to find bugs
+```bash
+# Run Valgrind to check for memory issues
+  valgrind --leak-check=full ./build/app/shell-app
+```
+
+## Text output of valgrind before fixing bug
+![Valgrind_Output_before](output/valgrind_output_before.txt)
+
+## Text output of valgrind after fixing bug
+![Valgrind_Output_before](output/valgrind_output_after.txt)
+
+## Questions
+#### What happens when the executable is linked statically?
+When linked statically, the entire code, including libraries, is included directly in the executable. Static linking can increase the size of the executable.
+
+#### Does Valgrind still detect the same bugs? Why or why not? 
+If Valgrind detects the same bugs, it means the static linking hasn’t altered the bugs, as they are related to the way memory is used in the code. The behavior of the program in memory management would likely remain the same, regardless of static or dynamic linking.
